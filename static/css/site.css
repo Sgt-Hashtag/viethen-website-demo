@@ -1,0 +1,21 @@
+.message {
+    font-weight: 600;
+    color: blue;
+    background-color: white;
+}
+.collapse {
+    &:not(.show) {
+      display: none;
+    }
+  }
+html,body{
+  height: 100%;
+  width: 100%;
+}
+.base-container{
+  display: flex;
+  height: inherit;
+  width: inherit;
+  background-color: lightcyan;
+}
+    

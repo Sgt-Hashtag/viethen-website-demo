@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/w3.css')}}">
+    <title>Hello, Flask</title>
+    <script src="../static/js/lib_three/three.module.js"></script>
+    <script type="module" src="../static/js/lib_three/STLLoader.js"></script>
+    <script type="module" src="../static/js/lib_three/OrbitControls.js"></script>
+    <script src="../static/js/lib_three/stats.module.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/site.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap_css/bootstrap.min.css')}}" />
+</head>
+
+<body>
+  <div class="base-container">
+    <div class="w3-bar-block w3-card" style="width:fit-content;background-color: gray;">
+        <div class="w3-bar-item">ID : {{id}}</div>
+        <div class="w3-bar-item">Timestamp : {{ date.strftime("%X") }} </div>
+        <div class="accordion accordion-flush" id="FehlerTypes">
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Pinhole
+                </button>
+              </h3>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#FehlerTypes">
+                <div class="accordion-body">
+                    <ol>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                    </ol>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  Luftblase
+                </button>
+              </h3>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#FehlerTypes">
+                <div class="accordion-body">
+                    <ol>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                    </ol>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  Gewerbe Verzerrung
+                </button>
+              </h3>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#FehlerTypes">
+                <div class="accordion-body">
+                    <ol>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                    </ol>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header" id="flush-headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    Fehlendes Harz
+                  </button>
+                </h3>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#FehlerTypes">
+                  <div class="accordion-body">
+                    <ol style="line-height:180%">
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                        <li><button>A</button><button>N</button><button>F</button></li>
+                    </ol>
+                </div>
+                </div>
+              </div>
+          </div>
+    </div>
+
+    <div class="w3-container" style="margin: 2rem 1.5rem 0rem 1.5rem;width: inherit;background-color: gray;">
+        {%if id %}
+        <span class="message">{{id}}</span>
+        {% else %}
+        <span class="message">1234</span>
+        {% endif %}
+        <canvas style="width: inherit; height: inherit;" id="model"></canvas>
+        <script type="module" src="{{ url_for('static', filename='js/stl_load.js')}}"></script>
+    </div>
+  </div>
+    <script src="{{ url_for('static', filename='js/lib_bootstrap/bootstrap.bundle.min.js')}}"></script>
+    
+</body>
+
+</html>
